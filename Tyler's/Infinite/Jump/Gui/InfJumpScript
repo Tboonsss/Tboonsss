@@ -1,0 +1,43 @@
+--[[ Info ]]--
+
+local ver = "2.00"
+local scriptname = "Vigdom"
+
+
+--[[ Keybinds ]]--
+local AirjumpKey = Enum.KeyCode.Space
+
+
+--[[ Dependencies ]]--
+
+local ca = game:GetService("ContextActionService")
+local zeezy = game:GetService("Players").LocalPlayer
+local h = 0.0174533
+local antigrav
+
+
+--[[ Functions ]]--
+function zeezyAirjump(act,inp,obj)
+	if inp == Enum.UserInputState.Begin then
+		zeezy.Character:FindFirstChildOfClass'Humanoid':ChangeState("Seated")
+		wait()
+		zeezy.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")	
+	end
+end
+
+
+--[[ Binds ]]--
+ca:BindAction("zeezyAirjump",zeezyAirjump,false,AirjumpKey)
+
+--[[ Load Message ]]--
+
+print(scriptname .. " " .. ver .. " loaded successfully")
+print("made by Vigdom")
+
+local notifSound = Instance.new("Sound",workspace)
+notifSound.PlaybackSpeed = 1.00
+notifSound.Volume = 10
+notifSound.SoundId = "rbxassetid://5600184020"
+notifSound.PlayOnRemove = true
+notifSound:Destroy()
+game.StarterGui:SetCore("SendNotification", {Title = "Tylers FE Inf Jump", Text = "T's Infinite Jump Loaded Successfully!", Icon = "rbxassetid://505845268", Duration = 5, Button1 = "<COOCHIE MAN CLICK ME>"})
